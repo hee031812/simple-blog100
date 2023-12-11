@@ -1,0 +1,105 @@
+.login__header {
+    border-top: 1px solid var(--white);
+    background-color: var(--black);
+    color: var(--white);
+    padding: 100px 0;
+    text-align: center;
+
+    h3 {
+        font-size: 30px;
+        margin: 0 auto;
+
+    }
+
+    p {
+        margin-top: 5px;
+    }
+}
+
+.list__wrap {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+
+
+
+    @media (max-width:1000px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width:800px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width:500px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    >div {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 24px 20px;
+
+
+        .cate {
+            padding: 3px 8px;
+            background-color: #abcc6d4b;
+            border-radius: 4px;
+            color: rgb(51, 175, 99);
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: inline-block;
+
+        }
+
+        &:nth-child(2n) {
+            .cate {
+                background-color: rgb(240, 222, 232);
+                color: #cc6d6d;
+            }
+        }
+
+        &:nth-child(3n) {
+            .cate {
+                background-color: rgba(68, 161, 219, 0.425);
+                color: rgb(68, 161, 219);
+            }
+        }
+
+        .title {
+            font-size: 17px;
+            line-height: 1.5;
+            font-weight: 600;
+            margin-bottom: 5px;
+
+            &:hover {
+                text-decoration: underline;
+                text-underline-position: unset;
+            }
+        }
+
+        .desc {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .auth {
+            font-size: 14px;
+            color: #ccc;
+            position: relative;
+            padding-left: 30px;
+
+            &::before {
+                content: '';
+                width: 18px;
+                height: 18px;
+                background-color: rgb(104, 133, 230);
+                position: absolute;
+                left: 0;
+                top: 0;
+                border-radius: 50%;
+            }
+        }
+    }
+}

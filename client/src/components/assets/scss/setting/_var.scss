@@ -1,0 +1,36 @@
+:root {
+    --mainfont-nanum: "NanumSquare";
+    --mainfont-nexon: "nexonMaplestory";
+
+    --black: #000;
+    --black100: #1f1e1e;
+    --black200: #3a3a3a;
+    --black300: #636262;
+    --black400: #919191;
+    --black500: #cfcdcd;
+
+    --white: #fff;
+    --white100: #d8d7d7;
+    --white200: #c2c2c2;
+    --white300: #a1a1a1;
+    --white400: #a5a5a5;
+    --white500: #5c5c5c;
+
+    --maincolor: #5f91dd;
+    font-family: var(--mainfont-nanum), var(--mainfont-nexon);
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+
+    // 폰트 최적화
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+
+    @media (max-width: 800px) {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}

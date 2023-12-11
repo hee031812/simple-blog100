@@ -1,0 +1,80 @@
+body {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+// 각 섹션에 공통 요소 
+section {
+    padding: 40px;
+
+    @media (max-width: 800px) {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+}
+
+main {
+    min-height: 80vh;
+}
+
+footer {
+    text-align: center;
+}
+
+// 비디오 마우스 아이콘 효과
+.play__icon {
+    a {
+        position: relative;
+        display: block;
+        cursor: pointer;
+        width: 100%;
+
+        &::before {
+            content: ' ';
+            width: 100%;
+            height: 100%;
+            background-color: #00000054;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: background-color 0.3s;
+        }
+
+        &:hover::before {
+            background-color: #00000000;
+        }
+
+        &::after {
+            content: '';
+            width: 80px;
+            height: 80px;
+            background: #0000008c url(../../img/icon/play.svg)no-repeat center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        &:hover::after {
+            opacity: 1;
+        }
+    }
+}
+
+.isLoading {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.isLoaded {
+    opacity: 1;
+    transition: opacity 1s;
+
+}
