@@ -117,6 +117,7 @@ router.post("/delete", (req, res) => {
 //         }
 //     })
 // });
+
 router.post("/image/upload", setUpload("react-blog100/post"), (req, res, next) => {
     console.log(res.req)
     res.status(200).json({ success: true, filePath: res.req.file.location })

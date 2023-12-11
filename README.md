@@ -8,6 +8,10 @@
 `npm install @emotion/css`
 `npm install @emotion/react`
 `npm install @emotion/styled`
+`npm install firebase`
+`npm install @reduxjs/toolkit`
+`npm install react-redux`
+
 
 
 
@@ -524,3 +528,23 @@ export default firebase;
 Authentication -> 아이디/비밀번호로 관리 클릭 -> 문서로이동 (오른쪽위)
 아래 링크에 사용하는 방법이 나온다.
 [https://firebase.google.com/docs/auth/web/firebaseui?hl=ko&authuser=0]
+
+
+### redux사용하기
+
+redux 설치후 아래 코드를 넣어준다.
+
+```js
+import { configureStore } from "@reduxjs/toolkit";
+import userSlice from "./userSlice";
+
+export default configureStore({
+    reducer: {
+        user: userSlice,
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
+}); 
+```

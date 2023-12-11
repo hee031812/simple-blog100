@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 import firebase from '../../firebase.js';
-// import axios from 'axios';
-// import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
 const Join = () => {
     const [youName, setyouName] = useState("");
     const [youEmail, setyouEmail] = useState("");
     const [youPass, setyouPass] = useState("");
     const [youPassC, setyouPassC] = useState("");
+    const [flag, setflag] = useState(false);
 
-    // let navigate = useNavigate();
+    let navigate = useNavigate();
 
-    const JoinFunc = async (e) => {
+    const JoinFunction = async (e) => {
         e.preventDefault();
 
         if (!(youName && youEmail && youPass && youPassC)) {
@@ -26,25 +27,26 @@ const Join = () => {
 
         await createUser.user.updateProfile({
             displayName: youName,
-        });
+        })
 
-        // console.log(createUser.user)
+        console.log(createUser.user)
 
-        // 개인정보를 --> mongoDB로 보관
-        // let body = {
-        //     email: createUser.user.multiFactor.user.email,
-        //     displayName: createUser.user.displayName.user.displayName,
-        //     uid: createUser.user.uid.user.uid,
-        // }
-        // axios.post('/api/user/join', body)
-        //     .then((response) => {
-        //         if (response.data.success) {
-        //             // 회원가입 성공
-        //             navigate("/login");
-        //         } else {
-        //             return alert("회원가입이 실패하였습니다.");
-        //         }
-        //     })
+        // 개인정보를-- > mongoDB로 보관
+        let body = {
+            email: createUser.user.multiFactor.user.email,
+            displayName: createUser.user.multiFactor.user.displayName,
+            uid: createUser.user.multiFactor.user.uid,
+        }
+        axios.post('/api/user/join', body)
+            .then((response) => {
+                setflag(false)
+                if (response.data.success) {
+                    // 회원가입 성공
+                    navigate("/login");
+                } else {
+                    return alert("회원가입이 실패하였습니다.");
+                }
+            })
     }
 
     return (
@@ -97,6 +99,7 @@ const Join = () => {
                             className="input__style"
                             autoComplete="off"
                             required
+                            minLength={8}
                             onChange={(e) => setyouPass(e.currentTarget.value)}
 
                         />
@@ -112,11 +115,12 @@ const Join = () => {
                             className="input__style"
                             autoComplete="off"
                             required
+                            minLength={8}
                             onChange={(e) => setyouPassC(e.currentTarget.value)}
                         />
                     </div>
                     <div>
-                        <button type="submit" className="btn" onClick={(e) => JoinFunc(e)}>회원가입</button>
+                        <button disabled={flag} type="submit" className="btn" onClick={(e) => JoinFunction(e)}>회원가입</button>
                     </div>
                 </fieldset>
             </form>
